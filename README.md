@@ -44,3 +44,59 @@ docker run --name dictionary -e "SPRING_PROFILES_ACTIVE=docker" -p 8080:8080 -t 
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
+
+#### Create Dictionary: POST /api/dictionary
+```
+curl --location 'http://localhost:8080/api/dictionary' \
+--header 'Content-Type: application/json' \
+--data '{
+    "description": "test",
+    "items": [
+        {
+            "key": "test_key_1",
+            "value": "test_value_1"
+        },
+        {
+            "key": "test_key_2",
+            "value": "test_value_2"
+        }
+    ]
+}'
+```
+
+#### Get Dictionary: GET /api/dictionary/{id}
+```
+curl --location 'http://localhost:8080/api/dictionary/15'
+```
+
+#### Get All Dictionaries: GET /api/dictionaries
+```
+curl --location 'http://localhost:8080/api/dictionaries'
+```
+
+#### Delete Dictionary: DELETE /api/dictionary/{id}
+```
+curl --location --request DELETE 'http://localhost:8080/api/dictionary/15'
+```
+
+#### Update Dictionary: PUT /api/dictionary/{id}
+```
+curl --location --request PUT 'http://localhost:8080/api/dictionary/15' \
+--header 'Content-Type: application/json' \
+--data '{
+    "description": "test",
+    "items": [
+        {
+            "id": 16,
+            "key": "test_key_111",
+            "value": "test_value_111"
+        },
+        {
+            "id": 17,
+            "key": "test_key_222",
+            "value": "test_value_222"
+        }
+    ]
+}'
+```
+

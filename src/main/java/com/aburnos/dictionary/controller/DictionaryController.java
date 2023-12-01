@@ -18,7 +18,7 @@ public class DictionaryController {
     @Autowired
     private DictionaryService dictionaryService;
 
-    @GetMapping("/dictionary")
+    @GetMapping("/dictionaries")
     public List<Dictionary> getAllDictionaries() {
         return dictionaryService.getAllDictionaries();
     }
