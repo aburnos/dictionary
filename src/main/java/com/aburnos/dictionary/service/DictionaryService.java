@@ -31,8 +31,7 @@ public class DictionaryService {
     }
 
     public Dictionary updateDictionary(@PathVariable Long id, @RequestBody Dictionary dictionary) {
-        Dictionary update = dictionaryRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(format("Dictionary not exist with id : %d", id)));
+        Dictionary update = getDictionaryById(id);
 
         update.setDescription(dictionary.getDescription());
         update.setItems(dictionary.getItems());
@@ -42,8 +41,7 @@ public class DictionaryService {
     }
 
     public Boolean deleteDictionary(@PathVariable Long id) {
-        Dictionary dictionary = dictionaryRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(format("Dictionary not exist with id : %d", id)));
+        Dictionary dictionary = getDictionaryById(id);
         dictionaryRepository.delete(dictionary);
         return Boolean.TRUE;
     }
